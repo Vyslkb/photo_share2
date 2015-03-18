@@ -8,7 +8,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'bcrypt'
+gem 'bcrypt','~> 3.1.7', require: "bcrypt"
 
 group :development do
   gem 'byebug'
