@@ -1,6 +1,6 @@
 <%= render 'shared/header', title: "Log In" %>
 
-<%=bootstrap_form_tag log_in_path do%>
+<%= bootstrap_form_tag url: "/log-in" do %>
 <%=text_field_tag :email %>
 <%=password_field_tag :password %>
 <%=submit_tag "Log in" %>
