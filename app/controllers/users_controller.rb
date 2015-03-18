@@ -32,12 +32,21 @@ class UsersController < ApplicationController
     end
   end
 
+  # def destroy
+  #   @user = User.find(params[:id])
+  #   @user.destroy
+  #   flash[:notice] = "Account destroyed!"
+  #   redirect_to '/'
+  # end
+  #
+  #
   def destroy
     @user = User.find(params[:id])
     @user.avatar.destroy
     flash[:notice] = "Avatar destroyed!"
     redirect_to user_path(@user)
   end
+
 
 
 
