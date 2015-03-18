@@ -18,4 +18,9 @@ class User < ActiveRecord::Base
       nil
     end
   end
+  #
+  # def delete_avatar
+  #   self.avatar = nil
+  #   self.save
+  # end
 end

@@ -1,3 +1,14 @@
-<%= form_for @user, :url => users_path, :html => { :multipart => true } do |form| %>
-<%= form.file_field :avatar %>
-<% end %>
+<%= render 'shared/header', title: "Edit Your Account" %>
+
+<%= bootstrap_form_for(@user) do |f| %>
+<%=f.text_field :email %>
+<%=f.password_field :password %>
+<%=f.password_field :password_confirmation %>
+<%= f.file_field :avatar %>
+<%=f.submit "Edit" %>
+<%end%>
+
+
+<%= link_to "Delete Avatar", user_path(@user),
+                              data: {confirm: "Are you sure?",
+                                      method: :delete} %>
