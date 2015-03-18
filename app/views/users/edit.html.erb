@@ -8,7 +8,8 @@
 <%=f.submit "Edit" %>
 <%end%>
 
-
+<% if @user.avatar.exists? %>
 <%= link_to "Delete Avatar", user_path(@user),
                               data: {confirm: "Are you sure?",
                                       method: :delete} %>
+<% end %>
