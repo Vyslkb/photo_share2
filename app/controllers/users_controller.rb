@@ -20,13 +20,11 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   def edit
     @user = User.find(params[:id])
   end
 
-  def update
+  def update # parameters should look like { :user => { :avatar => nil } }
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice]="You have successfully updated #{@user.email}!"
@@ -36,19 +34,16 @@ class UsersController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @user = User.find(params[:id])
-  #   @user.destroy
-  #   flash[:notice] = "Account destroyed!"
-  #   redirect_to '/'
-  # end
-  #
-  #
   def destroy
     @user = User.find(params[:id])
-    @user.avatar.destroy
-    flash[:notice] = "Avatar destroyed!"
-    redirect_to user_path(@user)
+    if @user.destroy
+      session[:user_id] = nil
+      flash[:alert] = "Account destroyed!"
+      redirect_to '/'
+    else
+      flash[:alert] = "There was a problem deleting your account. Please try again."
+      redirect_to '/'
+    end
   end
 
 

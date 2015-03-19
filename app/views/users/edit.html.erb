@@ -1,20 +1,21 @@
 <%= render 'shared/header', title: "Edit Your Account" %>
 
 <%= bootstrap_form_for(@user) do |f| %>
-<%=f.text_field :email %>
-<%=f.password_field :password %>
-<%=f.password_field :password_confirmation %>
-<%= f.file_field :avatar %>
-<%=f.submit "Edit" %>
+  <%=f.text_field :email %>
+  <%=f.password_field :password %>
+  <%=f.password_field :password_confirmation %>
+  <%= f.file_field :avatar %>
+  <%=f.submit "Edit" %>
 <%end%>
 
 <% if @user.avatar.exists? %>
-<%= link_to "Delete Avatar", user_path(@user),
-                              data: {confirm: "Are you sure?",
-                                      method: :delete} %>
+
+
+<%= link_to "Delete Avatar", user_path(@user) %>
+
 <% end %>
 
 
-<!-- <%= link_to "Delete Account", user_path(@user),
-                              data: {confirm: "Are you sure?",
-                                method: :delete} %> -->
+<%= link_to "Delete Account", user_path(@user),
+                              data: {confirm: "Are you sure? Your account will be permanently deleted.",
+                                method: :delete} %>
