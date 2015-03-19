@@ -9,10 +9,7 @@
 <%end%>
 
 <% if @user.avatar.exists? %>
-
-
-<%= link_to "Delete Avatar", user_path(@user) %>
-
+  <%= link_to "Delete Avatar", user_avatar_path(@user), data: { method: :delete } %>
 <% end %>
 
 

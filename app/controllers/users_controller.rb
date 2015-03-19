@@ -27,8 +27,18 @@ class UsersController < ApplicationController
   def update # parameters should look like { :user => { :avatar => nil } }
     @user = User.find(params[:id])
     if @user.update(user_params)
+      if user_params[:avatar].blank?
+        @user.avatar = nil
+        @user.save
+        binding.pry
+      end
       flash[:notice]="You have successfully updated #{@user.email}!"
       redirect_to user_path(@user)
+    # elsif link("Delete Avatar").click
+    #   @user.update(:avatar => nil)
+    #   @user.avatar.save
+    #   flash[:notice]="Avatar Destroyed!"
+    #   redirect_to user_path(@user)
     else
       render :edit
     end
