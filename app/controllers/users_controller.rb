@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      User.authenticate(params[:email], params[:password])
+      session[:user_id] = @user.id
       flash[:notice] = "Welcome to the site!"
       redirect_to user_path(@user)
     else
@@ -17,6 +19,8 @@ class UsersController < ApplicationController
       redirect_to :back
     end
   end
+
+
 
   def edit
     @user = User.find(params[:id])
